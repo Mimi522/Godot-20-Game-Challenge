@@ -4,6 +4,12 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Paddle" parent="." instance=ExtResource("1_1o76a")]
-position = Vector2(185, 293)
-scale = Vector2(3, 3)
+[node name="Player 1" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(47, 289)
+move_up = &"Player 1 - Move up"
+move_down = &"Player 1 - Move down"
+
+[node name="Player 2" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(1103, 289)
+move_up = &"Player 2 - Move up"
+move_down = &"Player 2 - Move down"
