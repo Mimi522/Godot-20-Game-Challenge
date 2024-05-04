@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://riso7tcpdvkd"]
+[gd_scene load_steps=2 format=3 uid="uid://riso7tcpdvkd"]
+
+[ext_resource type="PackedScene" uid="uid://derbvnf3o75e3" path="res://scenes/paddle.tscn" id="1_1o76a"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Paddle" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(185, 293)
+scale = Vector2(3, 3)

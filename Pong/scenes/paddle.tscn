@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://derbvnf3o75e3"]
+[gd_scene load_steps=4 format=3 uid="uid://derbvnf3o75e3"]
 
+[ext_resource type="Script" path="res://scripts/paddle.gd" id="1_u0u4a"]
 [ext_resource type="Texture2D" uid="uid://d3sxfjsk1bl6o" path="res://sprites/pong_sprite_sheet.png" id="2_7cax4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hv6c"]
 size = Vector2(12, 44)
 
 [node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_u0u4a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
