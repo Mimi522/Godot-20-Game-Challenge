@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8sy1nembnrqr"]
+
+[ext_resource type="Texture2D" uid="uid://d3sxfjsk1bl6o" path="res://sprites/pong_sprite_sheet.png" id="1_8dlqc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s65p"]
+radius = 8.06226
+
+[node name="Ball" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8dlqc")
+region_enabled = true
+region_rect = Rect2(1, 17, 14, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7s65p")
