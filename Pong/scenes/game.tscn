@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://riso7tcpdvkd"]
+[gd_scene load_steps=3 format=3 uid="uid://riso7tcpdvkd"]
 
 [ext_resource type="PackedScene" uid="uid://derbvnf3o75e3" path="res://scenes/paddle.tscn" id="1_1o76a"]
+[ext_resource type="PackedScene" uid="uid://cfn8blyrxykgl" path="res://scenes/wall.tscn" id="2_vq3ep"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,3 +14,9 @@ move_down = &"Player 1 - Move down"
 position = Vector2(1103, 289)
 move_up = &"Player 2 - Move up"
 move_down = &"Player 2 - Move down"
+
+[node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
+rotation = 3.14159
+
+[node name="BottomWall" parent="." instance=ExtResource("2_vq3ep")]
+position = Vector2(0, 648)
