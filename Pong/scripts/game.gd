@@ -1,8 +1,9 @@
 extends Node2D
 
 @export var ball_scene: PackedScene
+@export var score: Label
 
-const score = "%s : %s"
+const score_txt = "%s : %s"
 
 var player1_score := 0
 var player2_score := 0
@@ -34,4 +35,4 @@ func despawn_ball(body):
 	spawn_ball()
 
 func update_score():
-	$Score.text = score % [player1_score, player2_score]
+	score.text = score_txt % [player1_score, player2_score]
