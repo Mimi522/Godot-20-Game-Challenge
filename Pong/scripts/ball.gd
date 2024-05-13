@@ -11,9 +11,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var collision = move_and_collide(direction * delta * speed)
-	if (collision != null):
-		if (collision.get_collider().get_class() == "StaticBody2D"):
+	if collision != null:
+		if collision.get_collider().get_class() == "StaticBody2D":
 			direction = Vector2(direction.x, -direction.y)
-		if (collision.get_collider().get_class() == "CharacterBody2D"):
+		if collision.get_collider().get_class() == "CharacterBody2D":
 			direction = Vector2(-direction.x, direction.y)
 			speed *= 1.1
