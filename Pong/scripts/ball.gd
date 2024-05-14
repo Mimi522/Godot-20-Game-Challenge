@@ -12,4 +12,7 @@ func _ready():
 func _process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision != null:
+		if collision.get_collider().get_class() != "Area2D":
+			$BounceSound.play()
+		
 		velocity = velocity.bounce(collision.get_normal())
