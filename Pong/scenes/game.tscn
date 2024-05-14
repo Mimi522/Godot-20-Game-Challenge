@@ -34,10 +34,12 @@ position = Vector2(0, 648)
 
 [node name="LeftWall" parent="." instance=ExtResource("5_foabk")]
 rotation = 1.5708
+monitorable = false
 
 [node name="RightWall" parent="." instance=ExtResource("5_foabk")]
 position = Vector2(1152, 0)
 rotation = -1.5708
+monitorable = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1152.0
