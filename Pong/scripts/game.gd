@@ -32,6 +32,7 @@ func spawn_ball():
 
 func despawn_ball(body):
 	body.queue_free()
+	await get_tree().create_timer(0.1).timeout
 	spawn_ball()
 
 func update_score():
