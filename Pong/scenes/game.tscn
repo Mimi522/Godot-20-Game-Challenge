@@ -28,10 +28,13 @@ move_up = &"Player 2 - Move up"
 move_down = &"Player 2 - Move down"
 
 [node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
+position = Vector2(576, 0)
 rotation = 3.14159
+scale = Vector2(30, 4)
 
 [node name="BottomWall" parent="." instance=ExtResource("2_vq3ep")]
-position = Vector2(0, 648)
+position = Vector2(576, 648)
+scale = Vector2(30, 4)
 
 [node name="LeftWall" parent="." instance=ExtResource("5_foabk")]
 rotation = 1.5708

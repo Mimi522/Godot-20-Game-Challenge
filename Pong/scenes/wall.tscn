@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfn8blyrxykgl"]
+[gd_scene load_steps=3 format=3 uid="uid://cfn8blyrxykgl"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ef5t5"]
+[ext_resource type="Texture2D" uid="uid://d3sxfjsk1bl6o" path="res://sprites/pong_sprite_sheet.png" id="1_nhexr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ka2"]
+size = Vector2(42, 12)
 
 [node name="Wall" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("WorldBoundaryShape2D_ef5t5")
+shape = SubResource("RectangleShape2D_d0ka2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_nhexr")
+region_enabled = true
+region_rect = Rect2(3, 2, 42, 12)
