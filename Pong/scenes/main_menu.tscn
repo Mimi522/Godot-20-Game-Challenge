@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://1mh7pk68akni"]
+[gd_scene load_steps=2 format=3 uid="uid://1mh7pk68akni"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_12m1n"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_12m1n")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -51,3 +54,5 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Player vs AI"
+
+[connection signal="pressed" from="Panel/Player vs Player button" to="." method="_on_player_vs_player_button_pressed"]
