@@ -18,17 +18,17 @@ ball_scene = ExtResource("2_2qnrl")
 score = NodePath("CenterContainer/Score")
 
 [node name="Player 1" parent="." instance=ExtResource("1_1o76a")]
-position = Vector2(47, 289)
+position = Vector2(45, 368)
 move_up = &"Player 1 - Move up"
 move_down = &"Player 1 - Move down"
 
 [node name="Player 2" parent="." instance=ExtResource("1_1o76a")]
-position = Vector2(1103, 289)
+position = Vector2(1101, 368)
 move_up = &"Player 2 - Move up"
 move_down = &"Player 2 - Move down"
 
 [node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
-position = Vector2(576, 0)
+position = Vector2(574, 79)
 rotation = 3.14159
 scale = Vector2(30, 4)
 
@@ -46,6 +46,7 @@ rotation = -1.5708
 monitorable = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 79.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -61,5 +62,11 @@ vertical_alignment = 1
 stream = ExtResource("7_2iir6")
 volume_db = -20.0
 
+[node name="Button" type="Button" parent="."]
+offset_right = 192.0
+offset_bottom = 54.0
+text = "Menu"
+
 [connection signal="body_entered" from="LeftWall" to="." method="_on_dead_zone_body_entered_left"]
 [connection signal="body_entered" from="RightWall" to="." method="_on_dead_zone_body_entered_right"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -3,6 +3,8 @@ extends Node2D
 @export var ball_scene: PackedScene
 @export var score: Label
 
+var menu_scene = "res://scenes/main_menu.tscn"
+
 const score_txt = "%s : %s"
 
 var player1_score := 0
@@ -38,3 +40,7 @@ func despawn_ball(body):
 
 func update_score():
 	score.text = score_txt % [player1_score, player2_score]
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file(menu_scene)
