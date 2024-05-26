@@ -41,6 +41,9 @@ func despawn_ball(body):
 func update_score():
 	score.text = score_txt % [player1_score, player2_score]
 
+func _on_reset_pressed():
+	player1_score = 0
+	player2_score = 0
 
-func _on_button_pressed():
+func _on_back_to_menu_pressed():
 	get_tree().change_scene_to_file(menu_scene)
