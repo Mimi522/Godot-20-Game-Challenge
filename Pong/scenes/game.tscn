@@ -29,7 +29,6 @@ move_up = &"Player 2 - Move up"
 move_down = &"Player 2 - Move down"
 
 [node name="Bot" parent="." instance=ExtResource("4_a1jr1")]
-visible = false
 position = Vector2(1101, 368)
 scale = Vector2(3, 3)
 

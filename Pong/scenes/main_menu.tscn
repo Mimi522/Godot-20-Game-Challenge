@@ -56,3 +56,4 @@ grow_vertical = 2
 text = "Player vs AI"
 
 [connection signal="pressed" from="Panel/Player vs Player button" to="." method="_on_player_vs_player_button_pressed"]
+[connection signal="pressed" from="Panel/Player vs AI button" to="." method="_on_player_vs_ai_button_pressed"]

@@ -12,6 +12,11 @@ var player2_score := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"Player 2".visible = Global.isPvP
+	$"Player 2".set_process(Global.isPvP)
+	$Bot.visible = !Global.isPvP
+	$Bot.set_process(!Global.isPvP)
+	
 	update_score()
 	spawn_ball()
 
