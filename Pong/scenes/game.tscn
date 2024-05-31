@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_r50lq"]
 [ext_resource type="PackedScene" uid="uid://b8sy1nembnrqr" path="res://scenes/ball.tscn" id="2_2qnrl"]
 [ext_resource type="PackedScene" uid="uid://cfn8blyrxykgl" path="res://scenes/wall.tscn" id="2_vq3ep"]
-[ext_resource type="PackedScene" uid="uid://gbryx8qgsstw" path="res://scenes/bot.tscn" id="4_a1jr1"]
+[ext_resource type="Script" path="res://scripts/bot.gd" id="4_3pkm3"]
 [ext_resource type="PackedScene" uid="uid://cpebc2lhjonxu" path="res://scenes/dead_zone.tscn" id="5_foabk"]
 [ext_resource type="FontFile" uid="uid://c8441nf4opte8" path="res://fonts/PixelOperator8-Bold.ttf" id="6_wjm4u"]
 [ext_resource type="AudioStream" uid="uid://nbxwuh53j4h0" path="res://sounds/point.wav" id="7_2iir6"]
@@ -28,9 +28,9 @@ position = Vector2(1101, 368)
 move_up = &"Player 2 - Move up"
 move_down = &"Player 2 - Move down"
 
-[node name="Bot" parent="." instance=ExtResource("4_a1jr1")]
+[node name="Bot" parent="." instance=ExtResource("1_1o76a")]
 position = Vector2(1101, 368)
-scale = Vector2(3, 3)
+script = ExtResource("4_3pkm3")
 
 [node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
 position = Vector2(574, 79)
@@ -78,6 +78,7 @@ offset_right = 1152.0
 offset_bottom = 55.0
 text = "Reset"
 
+[connection signal="ball_spawned" from="." to="Bot" method="_on_game_ball_spawned"]
 [connection signal="body_entered" from="LeftWall" to="." method="_on_dead_zone_body_entered_left"]
 [connection signal="body_entered" from="RightWall" to="." method="_on_dead_zone_body_entered_right"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

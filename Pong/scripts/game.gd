@@ -10,17 +10,23 @@ const score_txt = "%s : %s"
 var player1_score := 0
 var player2_score := 0
 
-# Called when the node enters the scene tree for the first time.
+signal ball_spawned(ball)
+
 func _ready():
-	$"Player 2".visible = Global.isPvP
-	$"Player 2".set_process(Global.isPvP)
-	$Bot.visible = !Global.isPvP
-	$Bot.set_process(!Global.isPvP)
+	if (Global.isPvP):
+		$"Player 2".show()
+		$"Player 2".process_mode = PROCESS_MODE_INHERIT
+		$Bot.hide()
+		$Bot.process_mode = PROCESS_MODE_DISABLED
+	else:
+		$"Player 2".hide()
+		$"Player 2".process_mode = PROCESS_MODE_DISABLED
+		$Bot.show()
+		$Bot.process_mode = PROCESS_MODE_INHERIT
 	
 	update_score()
 	spawn_ball()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	update_score()
 
@@ -36,6 +42,7 @@ func spawn_ball():
 	var ball = ball_scene.instantiate()
 	ball.position = get_viewport_rect().size / 2
 	add_child(ball)
+	ball_spawned.emit(ball)
 
 func despawn_ball(body):
 	body.queue_free()
