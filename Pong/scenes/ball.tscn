@@ -9,7 +9,6 @@ radius = 8.06226
 
 [node name="Ball" type="CharacterBody2D"]
 texture_filter = 1
-collision_layer = 5
 script = ExtResource("1_am4rx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
