@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8sy1nembnrqr"]
+
+[ext_resource type="Texture2D" uid="uid://d3sxfjsk1bl6o" path="res://sprites/pong_sprite_sheet.png" id="1_8dlqc"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_am4rx"]
+[ext_resource type="AudioStream" uid="uid://46ubm4v85fqa" path="res://sounds/bounce.wav" id="3_lbpal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s65p"]
+radius = 8.06226
+
+[node name="Ball" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_am4rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_7s65p")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("1_8dlqc")
+region_enabled = true
+region_rect = Rect2(1, 17, 14, 14)
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lbpal")

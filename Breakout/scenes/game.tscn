@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://riso7tcpdvkd"]
+
+[ext_resource type="PackedScene" uid="uid://derbvnf3o75e3" path="res://scenes/paddle.tscn" id="1_1o76a"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_r50lq"]
+[ext_resource type="PackedScene" uid="uid://b8sy1nembnrqr" path="res://scenes/ball.tscn" id="2_2qnrl"]
+[ext_resource type="PackedScene" uid="uid://cfn8blyrxykgl" path="res://scenes/wall.tscn" id="2_vq3ep"]
+[ext_resource type="Script" path="res://scripts/bot.gd" id="4_3pkm3"]
+[ext_resource type="PackedScene" uid="uid://cpebc2lhjonxu" path="res://scenes/dead_zone.tscn" id="5_foabk"]
+[ext_resource type="FontFile" uid="uid://c8441nf4opte8" path="res://fonts/PixelOperator8-Bold.ttf" id="6_wjm4u"]
+[ext_resource type="AudioStream" uid="uid://nbxwuh53j4h0" path="res://sounds/point.wav" id="7_2iir6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a23kn"]
+font = ExtResource("6_wjm4u")
+font_size = 64
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score")]
+script = ExtResource("1_r50lq")
+ball_scene = ExtResource("2_2qnrl")
+score = NodePath("CenterContainer/Score")
+
+[node name="Player 1" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(45, 368)
+move_up = &"Player 1 - Move up"
+move_down = &"Player 1 - Move down"
+
+[node name="Player 2" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(1101, 368)
+move_up = &"Player 2 - Move up"
+move_down = &"Player 2 - Move down"
+
+[node name="Bot" parent="." instance=ExtResource("1_1o76a")]
+position = Vector2(1101, 368)
+script = ExtResource("4_3pkm3")
+
+[node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
+position = Vector2(574, 79)
+rotation = 3.14159
+scale = Vector2(30, 4)
+
+[node name="BottomWall" parent="." instance=ExtResource("2_vq3ep")]
+position = Vector2(576, 648)
+scale = Vector2(30, 4)
+
+[node name="LeftWall" parent="." instance=ExtResource("5_foabk")]
+rotation = 1.5708
+monitorable = false
+
+[node name="RightWall" parent="." instance=ExtResource("5_foabk")]
+position = Vector2(1152, 0)
+rotation = -1.5708
+monitorable = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 79.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Score" type="Label" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1 : 2"
+label_settings = SubResource("LabelSettings_a23kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2iir6")
+volume_db = -20.0
+
+[node name="BackToMenu" type="Button" parent="."]
+offset_right = 192.0
+offset_bottom = 54.0
+text = "Menu"
+
+[node name="Reset" type="Button" parent="."]
+offset_left = 960.0
+offset_right = 1152.0
+offset_bottom = 55.0
+text = "Reset"
+
+[connection signal="ball_spawned" from="." to="Bot" method="_on_game_ball_spawned"]
+[connection signal="body_entered" from="LeftWall" to="." method="_on_dead_zone_body_entered_left"]
+[connection signal="body_entered" from="RightWall" to="." method="_on_dead_zone_body_entered_right"]
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
