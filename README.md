@@ -5,6 +5,18 @@ Starting the 20 Game Challenge recommended by Pirate Software. By the end of thi
 ## Game 1 - Pong
 Traditional Pong arcade game. Good simple game to get introducted to Godot! Right...?
 
+### Goals
+- [x] Create an arena with two walls and a divider.
+- [x] Add a paddle on either end of the play field. Use player inputs to move the paddles up and down.
+- [x] Add a ball that moves around the playfield and bounces off of the paddles and walls.
+- [x] Detect when the ball leaves the playfield. Assign a point to the player who scored.
+- [x] Track and display the score for each player.
+
+### Stretch goals
+- [x] Write an AI script that can follow the ball so you can play with only one player.
+- [x] Add a menu and allow the player to reset the game.
+- [x] Add some basic sounds. Play a sound every time the ball collides with something, and every time a player scores.
+
 ### What did I learn?
 1. KinematicBody2D was renamed to CharacterBody2D, sure I guess? That was honestly confusing at first.
 2. Collisions is, as always, a pain to deal with.
@@ -25,3 +37,4 @@ Traditional Pong arcade game. Good simple game to get introducted to Godot! Righ
 1. Visual. Even though I'm not an artist and this is just a pong game I still think the visual could be way better.
 2. Need a confirmation key for game start as well as a simple visual tutorial on how to move the paddles on screen.
 3. Fix the bot AI. I do assume the logic I make is simple enough for it to naturally miss the ball but the sizes of the ball and the paddles compared to the whole field don't allow for it. Maybe trying out to balance a better size and then check if the logic makes the bot way to perfect or not. If it does I would need to look for ways to make it stupid.
+4. Change how I'm configuring the inputs for each player via inspector. Wants to use string formatter instead of passing the whole string which is way easier to misstype.
