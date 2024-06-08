@@ -15,7 +15,7 @@ Traditional Pong arcade game. Good simple game to get introducted to Godot! Righ
 7. Moving Area2D is annoying.
 
 ### What did I struggle with?
-1. Bouncing the ball around before I find out there is a function that makes it automatically for me... No seriously I still don't know if I was more sad or pissed to find that function.
+1. Bouncing the ball around before I find out there is a function that makes it automatically for me... No seriously, I still don't know if I was more sad or pissed to find that function.
 2. KinematicBody2D collisions for sure... I wanted to use both KinematicBody2D for the ball and the paddle but it resulted in the paddle sometimes being pushed by the ball or they both having some crazy after collision effect. Paddle could have been an Area2D but I wanted to maintain the way it moved by direction and velocity which made it necessary to have it as a KinematicBody2D. In the end I opted to have the paddle as a root KinematicBody2D to handle movement with an Area2D child that was solely there to collide with the ball.
 3. A little bit to find where to select region on a sripte atlas. How could I apply color to my object.
 4. Making UI. I still don't like how it turned out in the end even though I just made a simple menu and some UI elements on game scene. Mostly I had trouble trying to understand why the pivots for UI elements present in the game scene were locked to top left. It does feel a little bit weird to play around with it, so I definetly need to explore it more. No idea how it would behave on multiple resolutions nor do I intend to try it out on the first game. Let's just not dive into that right now... just not...
