@@ -11,6 +11,7 @@ size = Vector2(12, 44)
 
 [node name="Paddle" type="CharacterBody2D"]
 modulate = Color(0.368275, 0.742949, 0.500578, 1)
+rotation = 1.5708
 scale = Vector2(3, 3)
 collision_mask = 2
 script = ExtResource("1_u0u4a")
