@@ -12,30 +12,28 @@
 font = ExtResource("6_wjm4u")
 font_size = 32
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score")]
 script = ExtResource("1_r50lq")
 ball_scene = ExtResource("2_2qnrl")
-score = null
+score = NodePath("CenterContainer/Score")
 
 [node name="Player" parent="." instance=ExtResource("1_1o76a")]
 position = Vector2(576, 608)
-move_up = &"Player 1 - Move up"
-move_down = &"Player 1 - Move down"
 
 [node name="TopWall" parent="." instance=ExtResource("2_vq3ep")]
-position = Vector2(576, 80)
+position = Vector2(576, 64)
 rotation = 3.14159
-scale = Vector2(30, 4)
+scale = Vector2(30, 2)
 
 [node name="LeftWall" parent="." instance=ExtResource("2_vq3ep")]
 position = Vector2(0, 377)
 rotation = 1.5708
-scale = Vector2(13, 4)
+scale = Vector2(15, 4)
 
 [node name="RightWall" parent="." instance=ExtResource("2_vq3ep")]
 position = Vector2(1152, 377)
 rotation = 1.5708
-scale = Vector2(13, 4)
+scale = Vector2(15, 4)
 
 [node name="BottomWall" parent="." instance=ExtResource("5_foabk")]
 position = Vector2(576, 648)
@@ -61,15 +59,14 @@ volume_db = -20.0
 
 [node name="BackToMenu" type="Button" parent="."]
 offset_right = 192.0
-offset_bottom = 56.0
+offset_bottom = 52.0
 text = "Menu"
 
 [node name="Reset" type="Button" parent="."]
 offset_left = 960.0
 offset_right = 1152.0
-offset_bottom = 56.0
+offset_bottom = 52.0
 text = "Reset"
 
 [connection signal="body_entered" from="BottomWall" to="." method="_on_dead_zone_body_entered_left"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
-[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

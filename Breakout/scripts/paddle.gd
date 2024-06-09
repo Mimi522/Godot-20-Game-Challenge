@@ -2,14 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
-@export var move_up : StringName
-@export var move_down : StringName
-
 func _physics_process(_delta):
-	var direction = Input.get_axis(move_up, move_down)
+	var direction = Input.get_axis("Move Left", "Move Right")
 	if direction:
-		velocity.y = direction * SPEED
+		velocity.x = direction * SPEED
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
