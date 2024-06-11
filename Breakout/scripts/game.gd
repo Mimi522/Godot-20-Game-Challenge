@@ -3,6 +3,7 @@ extends Node2D
 @export var ball_scene: PackedScene
 @export var block_scene: PackedScene
 @export var score: Label
+@export var colors: Array[Color] 
 
 var menu_scene = "res://scenes/main_menu.tscn"
 
@@ -50,6 +51,7 @@ func spawn_blocks():
 		for i in range(7):
 			var block = block_scene.instantiate()
 			block.name = "block_%s_%s" % [i, j]
+			block.modulate = colors[j]
 			block.scale = block.scale * 3
 			block.position = start_pos + Vector2(delta_x * i, delta_y * j)
 			$Blocks.add_child(block)
