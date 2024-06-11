@@ -11,7 +11,7 @@ var player_score := 0
 
 signal ball_spawned(ball)
 
-func _ready():	
+func _ready():
 	update_score()
 	spawn_ball()
 
@@ -26,7 +26,7 @@ func _on_dead_zone_body_entered_right(body):
 
 func spawn_ball():
 	var ball = ball_scene.instantiate()
-	ball.position = get_viewport_rect().size / 2
+	ball.position = Vector2(get_viewport_rect().size.x / 2, 550)
 	add_child(ball)
 	ball_spawned.emit(ball)
 
