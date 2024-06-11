@@ -15,6 +15,7 @@ font_size = 32
 [node name="Game" type="Node2D" node_paths=PackedStringArray("score")]
 script = ExtResource("1_r50lq")
 ball_scene = ExtResource("2_2qnrl")
+block_scene = ExtResource("2_vq3ep")
 score = NodePath("CenterContainer/Score")
 
 [node name="Player" parent="." instance=ExtResource("1_1o76a")]
@@ -67,6 +68,8 @@ offset_left = 960.0
 offset_right = 1152.0
 offset_bottom = 52.0
 text = "Reset"
+
+[node name="Blocks" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="BottomWall" to="." method="_on_dead_zone_body_entered_left"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
