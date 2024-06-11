@@ -46,9 +46,10 @@ func update_score():
 	score.text = score_txt % [player_score]
 
 func spawn_blocks():
-	for j in range(5):
+	for j in range(4):
 		for i in range(7):
 			var block = block_scene.instantiate()
+			block.name = "block_%s_%s" % [i, j]
 			block.scale = block.scale * 3
 			block.position = start_pos + Vector2(delta_x * i, delta_y * j)
 			$Blocks.add_child(block)

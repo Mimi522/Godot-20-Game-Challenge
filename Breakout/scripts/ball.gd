@@ -12,6 +12,8 @@ func _physics_process(delta):
 	if collision != null:
 		if collision.get_collider().get_class() != "Area2D":
 			$BounceSound.play()
+		if collision.get_collider().name.contains("block"):
+			collision.get_collider().queue_free()
 		
 		velocity = velocity.bounce(collision.get_normal())
 		velocity *= 1.03
