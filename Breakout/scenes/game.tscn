@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://riso7tcpdvkd"]
+[gd_scene load_steps=10 format=3 uid="uid://riso7tcpdvkd"]
 
 [ext_resource type="PackedScene" uid="uid://derbvnf3o75e3" path="res://scenes/paddle.tscn" id="1_1o76a"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_r50lq"]
@@ -8,14 +8,19 @@
 [ext_resource type="FontFile" uid="uid://c8441nf4opte8" path="res://fonts/PixelOperator8-Bold.ttf" id="6_wjm4u"]
 [ext_resource type="AudioStream" uid="uid://nbxwuh53j4h0" path="res://sounds/point.wav" id="7_2iir6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_hxp37"]
+font = ExtResource("6_wjm4u")
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_a23kn"]
 font = ExtResource("6_wjm4u")
 font_size = 32
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("score")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("lives", "score")]
 script = ExtResource("1_r50lq")
 ball_scene = ExtResource("2_2qnrl")
 block_scene = ExtResource("2_vq3ep")
+lives = NodePath("CenterContainer/Lives")
 score = NodePath("CenterContainer/Score")
 colors = Array[Color]([Color(0.761716, 0.354746, 0.815898, 1), Color(0.0470588, 0.854902, 0.533333, 1), Color(0.933899, 0.679004, 0.168789, 1), Color(0.967298, 0.393894, 0.494952, 1)])
 
@@ -41,18 +46,43 @@ scale = Vector2(15, 4)
 position = Vector2(576, 648)
 monitorable = false
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-offset_left = 192.0
-offset_right = 960.0
-offset_bottom = 56.0
+[node name="CenterContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_right = 896.0
+offset_bottom = 52.0
+
+[node name="Lives" type="Label" parent="CenterContainer"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 224.0
+offset_bottom = 16.0
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Lives: 3"
+label_settings = SubResource("LabelSettings_hxp37")
+vertical_alignment = 1
 
 [node name="Score" type="Label" parent="CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "0
-"
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+text = "Score: 0"
 label_settings = SubResource("LabelSettings_a23kn")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PointSound" type="AudioStreamPlayer" parent="."]
