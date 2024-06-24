@@ -72,5 +72,5 @@ text = "Reset"
 
 [node name="Blocks" type="Node2D" parent="."]
 
-[connection signal="body_entered" from="BottomWall" to="." method="_on_dead_zone_body_entered_left"]
+[connection signal="body_entered" from="BottomWall" to="." method="_on_bottom_wall_body_entered"]
 [connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]

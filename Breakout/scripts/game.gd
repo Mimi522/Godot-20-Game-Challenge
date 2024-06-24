@@ -14,6 +14,7 @@ var delta_y = 64
 const score_txt = "Points: %s"
 
 var player_score := 0
+var player_lives := 3
 
 signal ball_spawned(ball)
 
@@ -25,11 +26,9 @@ func _ready():
 func _process(_delta):
 	update_score()
 
-func _on_dead_zone_body_entered_left(body):
+func _on_bottom_wall_body_entered(body):
 	despawn_ball(body)
-
-func _on_dead_zone_body_entered_right(body):
-	despawn_ball(body)
+	player_lives -= 1
 
 func spawn_ball():
 	var ball = ball_scene.instantiate()
