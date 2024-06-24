@@ -74,3 +74,19 @@ func spawn_blocks():
 
 func _on_back_to_menu_pressed():
 	get_tree().change_scene_to_file(menu_scene)
+
+func _on_reset_pressed():
+	player_lives = 3
+	player_score = 0
+	update_lives()
+	update_score()
+	
+	for n in $Blocks.get_children():
+		$Blocks.remove_child(n)
+		n.queue_free()
+	
+	game_over.hide()
+	spawn_blocks()
+	$Player.position.x = 576
+	$Player.process_mode = Node.PROCESS_MODE_ALWAYS
+	spawn_ball()
