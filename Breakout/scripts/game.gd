@@ -4,6 +4,7 @@ extends Node2D
 @export var block_scene: PackedScene
 @export var lives: Label
 @export var score: Label
+@export var game_over: Label
 @export var colors: Array[Color] 
 
 var menu_scene = "res://scenes/main_menu.tscn"
@@ -29,20 +30,27 @@ func _process(_delta):
 	pass
 
 func _on_bottom_wall_body_entered(body):
-	despawn_ball(body)
 	player_lives -= 1
 	update_lives()
+	despawn_ball(body, player_lives == 0)
+	
+	if (player_lives == 0):
+		game_over.show()
+		Global.save_score(player_score)
+		$Player.process_mode = Node.PROCESS_MODE_DISABLED
 
 func spawn_ball():
 	var ball = ball_scene.instantiate()
 	ball.position = Vector2(get_viewport_rect().size.x / 2, 550)
 	add_child(ball)
 
-func despawn_ball(body):
+func despawn_ball(body, dead):
 	body.queue_free()
 	$PointSound.play()
 	await get_tree().create_timer(0.1).timeout
-	spawn_ball()
+	
+	if (!dead):
+		spawn_ball()
 
 func update_lives():
 	lives.text = lives_txt % [player_lives]
