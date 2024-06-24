@@ -14,6 +14,7 @@ func _physics_process(delta):
 			$BounceSound.play()
 		if collision.get_collider().name.contains("block"):
 			collision.get_collider().queue_free()
+			Global.on_block_destroyed.emit()
 		
 		velocity = velocity.bounce(collision.get_normal())
 		velocity *= 1.03
