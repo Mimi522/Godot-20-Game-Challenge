@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_12m1n"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("game_menu", "score_history")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,8 +10,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_12m1n")
+game_menu = NodePath("Game Menu")
+score_history = NodePath("Scores")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Game Menu" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,7 +27,7 @@ offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player vs Player button" type="Button" parent="Panel"]
+[node name="Play button" type="Button" parent="Game Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,9 +40,9 @@ offset_right = 150.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Player vs Player"
+text = "Play"
 
-[node name="Player vs AI button" type="Button" parent="Panel"]
+[node name="Score History button" type="Button" parent="Game Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +55,43 @@ offset_right = 153.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Player vs AI"
+text = "Score History"
 
-[connection signal="pressed" from="Panel/Player vs Player button" to="." method="_on_player_vs_player_button_pressed"]
-[connection signal="pressed" from="Panel/Player vs AI button" to="." method="_on_player_vs_ai_button_pressed"]
+[node name="Scores" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -266.0
+offset_right = 198.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Scores"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Game Menu/Play button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Game Menu/Score History button" to="." method="_on_score_history_button_pressed"]
+[connection signal="pressed" from="Scores/Button" to="." method="_on_button_pressed"]
